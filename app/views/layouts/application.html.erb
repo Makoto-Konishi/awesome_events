@@ -13,9 +13,19 @@
   <header class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container">
       <%= link_to 'AwesomeEvents', root_path, class: 'navbar-brand' %>
+      <ul class="navbar-nav">
+        <% if logged_in? %>
+          <li class="nav-item"><%= link_to 'ログアウト', '/logout', class: 'nav-link', method: :delete %></li>
+        <% else %>
+         <li class="nav-item"><%= link_to 'GitHubでログイン', '/auth/github', class: 'nav-link', method: :post %></li>
+        <% end %>
+      </ul>
     </div>
   </header>
   <div class="container">
+    <% if flash.notice %>
+      <div class="alert alert-success"><%= flash.notice %></div>
+    <% end %>
     <%= yield %>
   </div>
   </body>
