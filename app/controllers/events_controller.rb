@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate, only: :show
+  skip_before_action :authenticate?, only: :show
 
   def new
     @event = current_user.created_events.build
@@ -14,6 +14,17 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+  end
+
+  def edit
+    @event = current_user.created_events.find(params[:id])
+  end
+
+  def update
+    @event = current_user.created_events.find(params[:id])
+    if @event.update(event_params)
+      redirect_to @event, notice: '更新しまじた'
+    end
   end
 
   private
