@@ -4,7 +4,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    debugger
     @event = current_user.created_events.build(event_params)
     if @event.save
       redirect_to @event, notice: 'イベントを作成しました'
@@ -14,6 +13,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :place, :start_at, :end_at)
+    params.require(:event).permit(:name, :place, :start_at, :end_at, :content)
   end
 end
