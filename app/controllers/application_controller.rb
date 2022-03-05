@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
+    # returnの返す値を省略するとnilになる, ログインしていない場合にはnilを返したいのでreturnの返す値を省略している。
     return unless session[:user_id]
     @current_user ||= User.find(session[:user_id])
   end
