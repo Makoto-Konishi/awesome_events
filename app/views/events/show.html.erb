@@ -59,5 +59,19 @@
     <% else %>
       <%= link_to '参加する', new_event_ticket_path(@event), class: 'btn btn-primary btn-lg btn-block' %>
     <% end %>
+    <hr>
+    <div class="card mb-2">
+      <h5 class="card-header">参加者</h5>
+      <ul class="list-group list-group-flush">
+        <% @tickets.each do |ticket| %>
+          <li class="list-group-item">
+            <%= link_to url_for_github(ticket.user), class: 'card-link' do %>
+              <%= image_tag ticket.user.image_url, width: 20, height: 20 %>
+              <%= "@#{ticket.user.name}" %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
