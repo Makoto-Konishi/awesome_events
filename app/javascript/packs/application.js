@@ -6,7 +6,7 @@
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
-
+require("get_form_turbolinks")
 import "bootstrap"
 import "bootstrap/scss/bootstrap.scss"
 // Uncomment to copy all static images under ../images to the output folder and reference
