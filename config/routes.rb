@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   end
 
   resource :retirements
+
+  match "*path" => 'application#error404', via: :all # 設定していないリクエストがきた場合に、error404アクションに飛ぶ
 end
